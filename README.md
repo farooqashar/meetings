@@ -1,6 +1,6 @@
 # Meetings
 
-## Web Hosting 
+## Web  
 
 ### This `Vue.js` project using `Firebase` is hosted on Vercel at https://meetings-jade.vercel.app/#/.
 
