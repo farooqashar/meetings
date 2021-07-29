@@ -1,4 +1,3 @@
-/* eslint-disable */
 <template>
   <div class="container mt-4">
     <div class="row justify-content-center">
@@ -13,7 +12,7 @@
                   type="text"
                   class="form-control"
                   name="meetingName"
-                  placeholder="Meeting name"
+                  placeholder="Meeting Name"
                   aria-describedby="buttonAdd"
                   v-model="meetingName"
                   ref="meetingName"
@@ -25,7 +24,7 @@
                     id="buttonAdd"
                     @click.prevent="handleAdd"
                   >
-                    +
+                  <i class="material-icons">add</i>
                   </button>
                 </div>
               </div>
@@ -44,8 +43,8 @@
           <div class="list-group list-group-flush">
             <div
               class="list-group-item d-flex"
-              v-for="item in meetings"
-              :key="item.id"
+              v-for="each_meeting in meetings"
+              :key="each_meeting.id"
             >
               <section
                 class="btn-group align-self-center"
@@ -53,29 +52,35 @@
                 aria-label="Meeting Options"
               >
                 <button
-                  class="btn btn-sm btn-outline-secondary"
+                  data-toggle="tooltip" 
+                  data-placement="top" 
                   title="Delete Meeting"
-                  @click="$emit('deleteMeeting', item.id)"
-                >Delete
+                  class="btn btn-sm btn-outline-secondary"
+                  @click="$emit('deleteMeeting', each_meeting.id)"
+                ><i class="material-icons">delete</i>
                 </button>
 
                 <router-link
                   class="btn btn-sm btn-outline-secondary"
                   title="Check In"
-                  :to="'/checkin/' + user.uid + '/' + item.id"
-                >Check In
+                  :to="'/checkin/' + user.uid + '/' + each_meeting.id"
+                ><i class="material-icons">link</i>
                 </router-link>
 
                 <router-link
                   class="btn btn-sm btn-outline-secondary"
                   title="Attendees"
-                  :to="'/attendees/' + user.uid + '/' + item.id"
-                >Attendees
+                  :to="'/attendees/' + user.uid + '/' + each_meeting.id"
+                ><i class="material-icons">list</i>
                 </router-link>
-               <br/>
+                <div
+                class="hidden"
+                >PLACEHOLDER
+                </div>
+
               </section>
               <section class="pl-3 text-left align-self-center">
-                {{item.name}}
+                {{each_meeting.name}}
               </section>
             </div>
           </div>
@@ -85,16 +90,17 @@
 
   </div>
 </template>
+
 <script>
 export default {
-  name: "meetings",
-  data: function() {
+  name: "Meetings",
+  data() {
     return {
       meetingName: null
     };
   },
   methods: {
-    handleAdd: function() {
+    handleAdd() {
       this.$emit("addMeeting", this.meetingName);
       this.meetingName = null;
       this.$refs.meetingName.focus();
@@ -103,3 +109,14 @@ export default {
   props: ["user", "meetings"]
 };
 </script>
+
+<style>
+
+.meetingName {
+  justify-content: center;
+}
+
+.hidden {
+  opacity: 0.0;
+}
+</style>
