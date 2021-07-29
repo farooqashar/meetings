@@ -36,7 +36,7 @@
                   class="form-control"
                   type="email"
                   placeholder="Email"
-                  v-model="eMail"
+                  v-model="email"
                 />
               </section>
               <div class="form-group text-right mb-0">
@@ -57,7 +57,7 @@ export default {
   data: function() {
     return {
       displayName: null,
-      eMail: null
+      email: null
     };
   },
   props: ["error"],
@@ -68,11 +68,11 @@ export default {
             userID: this.$route.params.userID,
             meetingID: this.$route.params.meetingID,
             displayName: this.displayName,
-            eMail: this.eMail
+            email: this.email
         }
         )
       this.displayName = null;
-      this.eMail = null;
+      this.email = null;
     }
   }
 };

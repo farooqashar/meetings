@@ -1,4 +1,3 @@
-/* eslint-disable */
 <template>
   <div>
     <nav class="site-nav navbar navbar-expand bg-primary navbar-dark">
@@ -26,6 +25,7 @@
           <button
             class="nav-item nav-link btn btn-link"
             @click="$emit('logout')"
+            v-if="user"
           >
             Log Out
           </button>
@@ -37,7 +37,7 @@
 
 <script>
 export default {
-  name: "navigation",
+  name: "Navigation",
   props: ["user"]
 };
 </script>

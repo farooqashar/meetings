@@ -9,7 +9,7 @@
                 <h3 class="font-weight-light mb-3">Log in</h3>
                 <section class="form-group">
                   <div class="col-12 alert alert-danger px-3" v-if="error">{{error}}</div>
-                  <label class="form-control-label sr-only" for="Email">Email</label>
+                  <label class="form-control-label sr-only" for="email">Email</label>
                   <input
                     required
                     class="form-control"
@@ -20,14 +20,17 @@
                   />
                 </section>
                 <section class="form-group">
+                 <label class="form-control-label sr-only" for="password">Password</label>
                   <input
                     required
                     class="form-control"
+                    id="password"
                     type="password"
                     placeholder="Password"
                     v-model="password"
                   />
                 </section>
+                 <br/>
                 <div class="form-group text-right mb-0">
                   <button class="btn btn-primary" type="submit">Log in</button>
                 </div>
@@ -39,14 +42,15 @@
     </form>
     <p class="text-center mt-2">
       or
-      <router-link to="/register">register</router-link>
+      <router-link to="/register">Register</router-link>
     </p>
   </div>
 </template>
+
 <script>
 import Firebase from "firebase";
 export default {
-  data: function() {
+  data() {
     return {
       email: "",
       password: "",
@@ -54,7 +58,7 @@ export default {
     };
   },
   methods: {
-    login: function() {
+    login() {
       const info = {
         email: this.email,
         password: this.password

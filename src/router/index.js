@@ -14,17 +14,17 @@ const routes = [
   },
   {
     path: "/login",
-    name: "login",
+    name: "Login",
     component: Login,
   },
   {
     path: "/meetings",
-    name: "meetings",
+    name: "Meetings",
     component: Meetings,
   },
   {
     path: "/register",
-    name: "register",
+    name: "Register",
     component: Register,
   },
   {
@@ -33,12 +33,12 @@ const routes = [
   },
   {
     path: '/checkin/:userID/:meetingID',
-    name: 'checkin',
+    name: 'Check In',
     component: CheckIn
   },
     {
     path: '/attendees/:userID/:meetingID',
-    name: 'attendees',
+    name: 'Attendees',
     component: Attendees
   }
 ];

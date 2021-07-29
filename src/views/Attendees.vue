@@ -42,7 +42,7 @@
                <a
                 class="btn btn-sm btn-outline-secondary"
                 title="Send user an email"
-                :href="'mailto:' + item.eMail">
+                :href="'mailto:' + item.email">
                 Email
               </a>
 
@@ -117,7 +117,7 @@ export default {
               snapshot.forEach(doc => {
                 snapData.push({
                     id: doc.id,
-                    eMail: doc.data().eMail,
+                    email: doc.data().email,
                     displayName: doc.data().displayName,
                     star: doc.data().star
                 })

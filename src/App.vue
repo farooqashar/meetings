@@ -1,4 +1,3 @@
-/* eslint-disable */
 <template>
   <div id="app">
     <Navigation
@@ -24,7 +23,7 @@ import Firebase from "firebase";
 import db from "./db.js";
 export default {
   name: "App",
-  data: function() {
+  data() {
     return {
       user: null,
       meetings: [],
@@ -32,7 +31,7 @@ export default {
     };
   },
   methods: {
-    logout: function() {
+    logout() {
       Firebase.auth()
         .signOut()
         .then(() => {
@@ -40,7 +39,7 @@ export default {
           this.$router.push("login");
         });
     },
-    addMeeting: function(payload) {
+    addMeeting(payload) {
       db.collection("users")
         .doc(this.user.uid)
         .collection("meetings")
@@ -57,11 +56,11 @@ export default {
        if (doc.exists) {
          db.collection("users").doc(payload.userID).collection("meetings").doc(payload.meetingID).collection("attendees").add({
            displayName: payload.displayName,
-           eMail: payload.eMail,
+           email: payload.email,
            createdAt: Firebase.firestore.FieldValue.serverTimestamp()
          }).then(() => this.$router.push("'/attendees/ + payload.userID + '/' + payload.meetingID"))
        } else {
-         this.error = "No such meeting in record"
+         this.error = "No such meeting exists in record. Please try again."
        }}
       )
     }
@@ -92,8 +91,7 @@ export default {
 };
 </script>
 
-
 <style lang="scss">
-$primary: #05b2dd;
+$primary: red;
 @import "node_modules/bootstrap/scss/bootstrap";
 </style>
