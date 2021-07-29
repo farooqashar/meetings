@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div class="container mt-4">
     <div class="row justify-content-center">
@@ -54,24 +55,25 @@
                 <button
                   class="btn btn-sm btn-outline-secondary"
                   title="Delete Meeting"
-                >D
+                  @click="$emit('deleteMeeting', item.id)"
+                >Delete
                 </button>
 
                 <router-link
                   class="btn btn-sm btn-outline-secondary"
                   title="Check In"
-                  to="/"
-                >C
+                  :to="'/checkin/' + user.uid + '/' + item.id"
+                >Check In
                 </router-link>
 
                 <router-link
                   class="btn btn-sm btn-outline-secondary"
                   title="Attendees"
-                  to="/"
-                >A
+                  :to="'/attendees/' + user.uid + '/' + item.id"
+                >Attendees
                 </router-link>
+               <br/>
               </section>
-
               <section class="pl-3 text-left align-self-center">
                 {{item.name}}
               </section>

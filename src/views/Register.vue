@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 <template>
   <div>
     <form class="mt-3" @submit.prevent="register">

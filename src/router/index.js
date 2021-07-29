@@ -3,6 +3,8 @@ import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Meetings from "../views/Meetings.vue";
 import Register from "../views/Register.vue";
+import CheckIn from "../views/CheckIn.vue";
+import Attendees from "../views/Attendees.vue";
 
 const routes = [
   {
@@ -29,6 +31,16 @@ const routes = [
     path: '/:pathMatch(.*)*',
     redirect: "/",
   },
+  {
+    path: '/checkin/:userID/:meetingID',
+    name: 'checkin',
+    component: CheckIn
+  },
+    {
+    path: '/attendees/:userID/:meetingID',
+    name: 'attendees',
+    component: Attendees
+  }
 ];
 
 const router = createRouter({

@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div>
     <nav class="site-nav navbar navbar-expand bg-primary navbar-dark">
