@@ -1,6 +1,13 @@
 # Meetings
 
-## Project setup
+## Web  
+
+### This `Vue.js` project using `Firebase` is hosted on Vercel at https://meetings-jade.vercel.app/#/.
+
+
+## Local 
+
+### Project setup
 ```
 npm install
 ```
