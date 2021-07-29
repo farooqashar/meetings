@@ -20,6 +20,7 @@
                 >Name</label>
                 <input
                   required
+                  id="displayName"
                   class="form-control"
                   type="text"
                   placeholder="Name"
@@ -29,16 +30,18 @@
               <section class="form-group">
                 <label
                   class="form-control-label sr-only"
-                  for="Email"
+                  for="email"
                 >Email</label>
                 <input
                   required
                   class="form-control"
                   type="email"
                   placeholder="Email"
+                  id="email"
                   v-model="email"
                 />
               </section>
+              <br/>
               <div class="form-group text-right mb-0">
                 <button
                   class="btn btn-primary"
@@ -54,7 +57,7 @@
 </template>
 <script>
 export default {
-  data: function() {
+  data() {
     return {
       displayName: null,
       email: null
@@ -62,7 +65,7 @@ export default {
   },
   props: ["error"],
   methods: {
-    handleCheckIn: function() {
+    handleCheckIn() {
         this.$emit("checkIn", 
         {
             userID: this.$route.params.userID,
