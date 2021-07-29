@@ -37,16 +37,21 @@
                 </section>
                 <div class="form-row">
                   <section class="col-sm-6 form-group">
+                  <label class="form-control-label sr-only" for="password">Password</label>
                     <input
                       class="form-control"
+                      required
+                      id="password"
                       type="password"
                       placeholder="Password"
                       v-model="passOne"
                     />
                   </section>
                   <section class="col-sm-6 form-group">
+                  <label class="form-control-label sr-only" for="confirmpassword">Confirm Password</label>
                     <input
                       class="form-control"
+                      id="confirmpassword"
                       type="password"
                       required
                       placeholder="Repeat Password"
@@ -54,6 +59,7 @@
                     />
                   </section>
                 </div>
+                <br/>
                 <div class="form-group text-right mb-0">
                   <button class="btn btn-primary" type="submit">Register</button>
                 </div>
@@ -65,23 +71,25 @@
     </form>
     <p class="text-center mt-2">
       or
-      <router-link to="/login">login</router-link>
+      <router-link to="/login">Login</router-link>
     </p>
   </div>
 </template>
+
 <script>
 import Firebase from "firebase";
 export default {
-  data: function() {
+  data() {
     return {
       displayName: null,
       email: null,
       passTwo: null,
+      passOne: null,
       error: null
     };
   },
   methods: {
-    register: function() {
+    register() {
       const info = {
         email: this.email,
         password: this.passOne,
@@ -108,13 +116,23 @@ export default {
     }
   },
   watch: {
-    passTwo: function() {
+    passOne() {
+      const regex = /\d/;
+      if (this.passOne.length <= 6) {
+        this.error = "Password Must Be Greater Than 6 Characters"
+      } else if (!regex.test(this.passOne)) {
+        this.error = "Password Must Contain At Least One Number"
+      } else {
+        this.error = null
+      }
+    },
+    passTwo() {
       if (
         this.passOne !== "" &&
         this.passTwo !== "" &&
         this.passTwo !== this.passOne
       ) {
-        this.error = "passwords must match";
+        this.error = "Passwords Do Not Match";
       } else {
         this.error = null;
       }

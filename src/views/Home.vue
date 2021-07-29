@@ -6,12 +6,12 @@
         class="text-center"
       >
         Welcome back
-        <span class="font-weight-bold text-info">{{user.displayName}}</span>, <a
+        <span class="font-weight-bold text-info">{{user.displayName}}!</span> <a
           href="#"
           role="button"
           class="text-primary"
           @click="$emit('logout')"
-        >logout</a>
+        >Logout</a>
       </div>
     </div>
     <div class="container text-center">
@@ -19,10 +19,10 @@
         <div class="col-10 col-md-10 col-lg-8 col-xl-7">
           <h4 class="display-4 text-primary mb-2">Meeting Log</h4>
           <p class="lead">
-            This simple app creates meetings, allows people to check in, and
-            picks random users to award giveaways.
+            This simple app creates meetings and allows people to check in.
           </p>
 
+          <div class="frontbuttons">
           <router-link
             class="btn btn-outline-primary mr-2"
             to="/register"
@@ -33,6 +33,8 @@
             to="/login"
             v-if="!user"
           >Log In</router-link>
+          </div>
+
           <router-link
             class="btn btn-primary"
             to="/meetings"
@@ -50,3 +52,13 @@ export default {
   props: ["user"]
 };
 </script>
+
+<style>
+
+.frontbuttons  {
+  display: flex;
+  justify-content: center;
+}
+
+</style>
+
