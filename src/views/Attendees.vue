@@ -37,23 +37,26 @@
                 :class="[item.star ? 'text-danger' : '', 'btn-outline-secondary']"
                 title="Give user a Star"
                 @click="toggleStar(item.id)"
-              >Award Star
+              ><i class="material-icons">star</i>
               </button>
                <a
                 class="btn btn-sm btn-outline-secondary"
                 title="Send user an email"
-                :href="'mailto:' + item.email">
-                Email
+                :href="'mailto:' + item.email + '?body=' + 'Hi ' + item.displayName + '&subject=Meeting Information'">
+                <i class="material-icons">email</i>
               </a>
 
               <button
                 class="btn btn-sm btn-outline-secondary"
                 title="Delete Attendee"
                 @click="deleteAttendee(item.id)"
-              >Delete
+              ><i class="material-icons">delete</i>
               </button>
-
               </div>
+                <div
+                class="hidden"
+                >123
+                </div>
             <div>{{item.displayName}}</div>
           </div>
         </div>
@@ -66,7 +69,7 @@
 import db from "../db.js"
 
 export default {
-  name: "attendees",
+  name: "Attendees",
   data() {
       return {
           attendees: [],
@@ -130,3 +133,11 @@ export default {
 };
 
 </script>
+
+<style>
+
+.hidden {
+  opacity: 0.0;
+}
+
+</style>
